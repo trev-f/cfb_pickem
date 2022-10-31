@@ -10,5 +10,5 @@ pylint
 black
 pytest
 pytest-cov
-python-dotenv>=0.5.1
+python-dotenv==0.20.0
 jupyterlab
