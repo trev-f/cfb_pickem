@@ -1,4 +1,5 @@
 import click
+import cfbd
 from dotenv import load_dotenv
 import logging
 import os
@@ -16,6 +17,19 @@ def main():
     click.echo("Download external data!")
 
     logger.info("End of the main function for downloading external data")
+
+
+def configure_cfbd_api_auth() -> cfbd.configuration.Configuration:
+    """Configure the CollegeFootballData.com API key authorization
+
+    :return: The configured API key authorization
+    :rtype: cfbd.configuration.Configuration
+    """
+    configuration = cfbd.Configuration()
+    configuration.api_key["Authorization"] = get_cfbd_api_key()
+    configuration.api_key_prefix['Authorization'] = 'Bearer'
+
+    return configuration
 
 
 def get_cfbd_api_key() -> str:
